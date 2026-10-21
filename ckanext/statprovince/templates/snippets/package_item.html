@@ -15,6 +15,10 @@
               {% endif %}
             {% endblock %}
             {% block heading_title %}
+    {% if package.get('extras') %}
+      <i class="fa fa-cloud-download" aria-hidden="true" title="มีข้อมูลเพิ่มเติม (extras)"></i>
+      <span class="visually-hidden">มีข้อมูลเพิ่มเติม (extras)</span>
+    {% endif %}
     <a href="{{ h.url_for('%s.read' % package.type, id=package.name) }}" title="{{ title }}">
       {{title|truncate(100)}}
     </a>

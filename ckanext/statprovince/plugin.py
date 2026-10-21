@@ -96,6 +96,7 @@ class StatProvincePlugin(plugins.SingletonPlugin):
 
     def get_helpers(self):
         return {
+            "statprovince_source_catalog_url": helpers.source_catalog_url,
             "statprovince_visible_labels": helpers.visible_labels,
             "statprovince_footer_contact": helpers.footer_contact,
             "statprovince_top_groups": helpers.top_groups,

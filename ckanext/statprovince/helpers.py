@@ -1,9 +1,33 @@
 import logging
+from urllib.parse import quote, urlsplit
 
 import ckan.plugins.toolkit as toolkit
 from ckanext.statprovince.provinces import PROVINCE_NAMES
 
 log = logging.getLogger(__name__)
+
+
+def source_catalog_url(package):
+    """Resolve provenance from extras, accepting only ordinary web URLs."""
+    extras = {e.get('key'): e.get('value') for e in package.get('extras', [])}
+    for key in ('harvest_source_url', 'statprovince_source_url'):
+        value = extras.get(key)
+        if not isinstance(value, str):
+            continue
+        value = value.strip()
+        try:
+            parsed = urlsplit(value)
+            if parsed.scheme not in ('http', 'https') or not parsed.netloc or parsed.username or parsed.password:
+                continue
+        except ValueError:
+            continue
+        if key == 'harvest_source_url' and '/dataset/' not in parsed.path:
+            path = parsed.path.rstrip('/')
+            if not path.endswith('/dataset'):
+                path += '/dataset'
+            value = parsed._replace(path=path + '/' + quote(package.get('name', ''), safe=''), query='', fragment='').geturl()
+        return value
+    return None
 
 
 def visible_labels(labels):

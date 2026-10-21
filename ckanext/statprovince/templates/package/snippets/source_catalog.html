@@ -1,0 +1,7 @@
+{% set source_url = h.statprovince_source_catalog_url(pkg) %}
+{% if pkg.get('extras') and source_url %}
+  <p class="statprovince-source-catalog">
+    <strong>อ้างอิงระบบบัญชีข้อมูล:</strong>
+    <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer" style="overflow-wrap: anywhere;">{{ source_url }}</a>
+  </p>
+{% endif %}
