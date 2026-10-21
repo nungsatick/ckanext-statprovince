@@ -1,0 +1,22 @@
+{% ckan_extends %}
+
+{% block header_wrapper %}
+  {% asset 'statprovince/header_css' %}
+  <div class="sp-header">
+    {{ super() }}
+  </div>
+{% endblock %}
+
+{% block header_account_notlogged %}
+  <li>{% link_for _('Log in'), named_route='user.login' %}</li>
+{% endblock %}
+
+{% block header_logo %}
+  <a class="logo sp-brand" href="{{ h.url_for('home.index') }}">
+    <img class="sp-nso-logo" src="{{ h.url_for_static('/statprovince/images/nso-logo.png') }}" alt="สำนักงานสถิติแห่งชาติ" />
+    <img class="sp-title-logo" src="{{ h.url_for_static('/statprovince/images/provincial.png') }}" alt="Provincial STAT Catalog" />
+  </a>
+{% endblock %}
+
+{% block header_site_search_label %}{{ _('Search datasets') }}{% endblock %}
+

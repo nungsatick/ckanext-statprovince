@@ -1,0 +1,12 @@
+{% ckan_extends %}
+
+{% block tag_list %}
+  {% set visible_tags = h.statprovince_visible_labels(tags) %}
+  {% if visible_tags %}
+    <ul class="{{ _class or 'tag-list' }}">
+      {% for tag in visible_tags %}
+        <li><a class="{% block tag_list_item_class %}tag{% endblock %}" href="{% url_for 'dataset.search', tags=tag.name %}" title="{{ tag.display_name }}">{{ tag.display_name|truncate(22) }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

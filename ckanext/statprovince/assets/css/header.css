@@ -1,0 +1,58 @@
+.sp-header { position: sticky; top: 0; z-index: 1030; }
+.sp-header .container { width: 100%; max-width: 1620px; padding-inline: 24px; }
+.sp-header .account-masthead { min-height: 44px; background: #f5f5f4; background-image: repeating-linear-gradient(135deg, #ffffff30 0 1px, transparent 1px 4px); border: 0; }
+.sp-header .account-masthead .container { min-height: 44px; display: flex; justify-content: flex-end; align-items: center; }
+.sp-header .account-masthead .account { float: none; }
+.sp-header .account-masthead ul { margin: 0; }
+.sp-header .account-masthead .account ul li { border-left: 1px solid #333; }
+.sp-header .account-masthead .account ul li a { color: #333; font-size: 14px; padding: 3px 10px; line-height: 22px; }
+.sp-header .account-masthead .account ul li a:hover { background: #e3e5e7; }
+.sp-header .masthead { background: #233244; border: 0; padding: 0; min-height: 100px; }
+.sp-header .navbar { padding: 14px 0; min-height: 100px; gap: 28px; background: transparent; }
+.sp-header hgroup { margin: 0; flex-shrink: 0; }
+.sp-header .masthead .sp-brand { display: flex; flex-flow: row nowrap; align-items: center; gap: 14px; width: 390px; }
+.sp-header .sp-brand img { display: block; height: auto; max-height: none; }
+.sp-header .sp-brand .sp-nso-logo { width: 32%; }
+.sp-header .sp-brand .sp-title-logo { width: 64%; }
+.sp-header .main-navbar { gap: 18px; }
+.sp-header .masthead .navbar-nav { align-items: center; gap: 6px; background: transparent; }
+.sp-header .masthead .navbar .navbar-nav > li > a { white-space: nowrap; color: #fff; font-size: 16px; padding: 5px 8px; border-radius: 4px; background: transparent; }
+.sp-header .masthead .navbar .navbar-nav > li > a:hover,
+.sp-header .masthead .navbar .navbar-nav > li > a:focus-visible { background: transparent; color: #fff; text-decoration: underline; }
+.sp-header .masthead .navbar .navbar-nav > li.active > a,
+.sp-header .masthead .navbar .navbar-nav > li > a:active { background: #005d76; color: #fff; text-decoration: none; }
+.sp-header .site-search { position: relative; margin: 0; flex: 0 0 200px; width: 200px; }
+.sp-header .site-search .form-control { width: 100%; height: 36px; margin: 0 !important; padding: 5px 36px 5px 12px; font-size: 16px; border: 1px solid #c9c9c9; border-radius: 7px; background: #fff; color: #333; }
+.sp-header .site-search .btn { position: absolute; right: 4px; top: 3px; width: 30px; height: 30px; padding: 0; color: #333; background: transparent; font-size: 16px; }
+@media (min-width: 1500px) { .sp-header .container { width: calc(100% - 240px); max-width: 1660px; } }
+@media (max-width: 1699px) and (min-width: 992px) {
+  .sp-header .masthead .sp-brand { width: 360px; }
+  .sp-header .navbar, .sp-header .main-navbar { gap: 22px; }
+  .sp-header .masthead .navbar-nav { gap: 8px; }
+  .sp-header .navbar-nav li a { font-size: 16px; padding-inline: 8px; }
+  .sp-header .site-search { flex-basis: 200px; width: 200px; }
+}
+@media (max-width: 1199px) {
+  .sp-header .navbar { flex-wrap: wrap; }
+  .sp-header .navbar-toggler { display: block; }
+  .sp-header .main-navbar { flex-basis: 100%; }
+  .sp-header .main-navbar:not(.show) { display: none !important; }
+  .sp-header .main-navbar.show { display: block !important; }
+  .sp-header .navbar-nav { flex-direction: column; }
+  .sp-header .account-masthead, .sp-header .account-masthead .container { min-height: 40px; }
+  .sp-header .account-masthead .account ul li a { font-size: 14px; padding: 3px 10px; }
+  .sp-header .masthead, .sp-header .navbar { min-height: 80px; }
+  .sp-header .navbar { padding: 10px 0; gap: 12px; justify-content: space-between; }
+  .sp-header hgroup { max-width: calc(100% - 65px); }
+  .sp-header .masthead .sp-brand { width: 280px; max-width: 100%; gap: 10px; }
+  .sp-header .main-navbar { padding-top: 16px; }
+  .sp-header .masthead .navbar-nav { align-items: stretch; gap: 0; }
+  .sp-header .navbar-nav li a { display: block; font-size: 16px; }
+  .sp-header .site-search { width: 100%; margin-top: 12px; }
+  .sp-header .site-search .form-control { height: 36px; font-size: 16px; }
+  .sp-header .site-search .btn { top: 3px; }
+}
+
+
+
+

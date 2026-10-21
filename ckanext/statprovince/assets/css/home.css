@@ -1,0 +1,527 @@
+/* หน้าแรก Provincial STAT Catalog — พอร์ตจาก home/css/layout1.css เดิม */
+
+/* หัวเรื่อง */
+body {
+  padding-top: 0;
+  background: radial-gradient(1200px 600px at 15% 5%, #34b3ff 0%, rgba(52, 179, 255, 0) 60%),
+    linear-gradient(180deg, #0ea5e9 0%, #4f46e5 100%);
+  color: #fff;
+  background-image: url('/statprovince/images/background_PSC.png');
+  background-size: cover;
+  /* ✔ ปรับภาพให้พอดีแบบเต็มจอ */
+  background-position: left;
+  /* ✔ จัดให้อยู่กลาง */
+  background-repeat: no-repeat;
+  /* ✔ ไม่ให้ซ้ำ */
+  background-attachment: fixed;
+  /* (เลือก) ทำให้ภาพไม่เลื่อน */
+  margin: 0;
+  /* ป้องกันมีช่องว่างด้านบน */
+  height: 100vh;
+  /* ✔ สูงเท่าหน้าจอ */
+}
+
+.floating-box{
+  animation: float-up-down 5s ease-in-out infinite;
+}
+
+@keyframes float-up-down {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* กล่องดำ */
+.center_dark_blue{
+    margin-top: 159px;
+    display: flex;
+    align-items: center;
+    height: 200px;
+    position: absolute;
+    /* width: 100%; */
+    background-color: #06252f;
+    border-radius: 55px 0 0 55px;
+    box-shadow: 0 0 50px 15px rgba(0, 74, 173, 0.3);
+}
+.text_about{
+    color: white;
+    padding: 12px 15px 0px 15px;;
+}
+
+
+/* กล่องพื้นขาวจริง ๆ */
+/* คอลัมน์ขวาให้เป็น flex เพื่อให้กล่องข้างในยืดเต็มความสูงคอลัมน์ */
+.hero-right-col{
+  display: flex;
+  align-items: stretch;
+}
+
+/* กล่องพื้นขาว */
+.hero-card-box{
+  background: #fff;
+  border-radius: 0px;
+  padding: 24px;
+  width: 100%;
+  height: 100%;            /* สำคัญ: สูงเต็มคอลัมน์ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* รูปข้างใน */
+.hero-card-box img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-row {
+  align-items: stretch !important;
+}
+
+
+.color_text_header {
+  color: #00387f;
+}
+
+h5 {
+  font-size: 19px;
+}
+
+.navbar {
+  background: transparent;
+}
+
+.navbar a {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.hero-section {
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+}
+
+.search-box {
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  gap: 10px;
+  border-radius: 26px;
+  box-shadow: 0 0 39px 16px rgba(0, 66, 170, 0.2);
+}
+
+.search-box input {
+  border-radius: 30px;
+  border: none;
+  padding: 12px 20px;
+}
+
+.search-box button {
+  border-radius: 30px;
+  background-color: #38e0c4;
+  border: none;
+  color: #003c4d;
+  font-weight: 600;
+  padding: 10px 25px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  font-size: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.stats span {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.btn-outline-light {
+  border-radius: 30px;
+  margin-top: 30px;
+  border: 2px solid #ffffff;
+  background-color: #38e0c4;
+  color: #003c4d;
+}
+
+.btn-outline-light:hover {
+  background-color: #38e0c4;
+  color: #003c4d;
+}
+
+.illustration {
+  margin-top: 60px;
+}
+
+.illustration img {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* กลุ่ม */
+.carousel-item {
+  padding: 0 50px;
+}
+
+h2.section-title {
+  color: #0066cc;
+  font-weight: 700;
+  margin: 24px 0 -28px 0;
+}
+
+.group-section {
+  background-color: white;
+}
+
+.nso-home .card {
+  border-radius: 20px;
+  padding: 20px;
+  /* min-height: 40vh; */
+  transition: transform 0.3s;
+  color: black;
+  /* background: radial-gradient(circle at top left, #e3f2fd 0%, transparent 60%); */
+  box-shadow: 0 0 50px 15px rgba(0, 74, 173, 0.3);
+}
+
+.nso-home .card:hover {
+  transform: translateY(-5px);
+}
+
+.nso-home .card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.carousel-inner {
+  padding: 20px 0 60px 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: #007bff;
+  border-radius: 50%;
+  background-size: 50%;
+  padding: 20px;
+}
+
+.carousel-control-prev-icon {
+  transform: rotate(0deg);
+}
+
+.img_hero {
+  display: flex;
+  /* กำหนดให้เป็น Flexbox */
+  justify-content: center;
+  /* จัดกึ่งกลางตามแกนแนวนอน */
+  align-items: center;
+  /* จัดกึ่งกลางตามแกนแนวตั้ง */
+}
+
+.carousel-group {
+  padding: 0px 15px 0px 15px;
+}
+
+/* องค์กร */
+/* พื้นหลังแบบในภาพ */
+.all_col {
+  min-height: 70vh;
+}
+
+
+.org-section {
+  color: #fff;
+  padding: 40px 0 24px;
+
+}
+
+.org-title {
+  font-weight: 800;
+  letter-spacing: .2px;
+  padding-top: 30px;
+}
+
+/* องกร */
+/* โครงร่างการ์ด */
+.org-card {
+  position: relative;
+  background: #fff;
+  border-radius: 40px;
+  padding: 18px 16px 16px;
+  /* box-shadow: 0 10px 20px rgba(0,0,0,.08); */
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+  /* background: radial-gradient(circle at top left, #e9f2ff 0%, transparent 60%); */
+  box-shadow: 0 0 50px 15px rgba(0, 74, 173, 0.3);
+}
+
+.org-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .12);
+}
+
+.org-logo {
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  /* background: #f5f7fb; */
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.org-name {
+  color: #0f172a;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.25;
+  min-height: 44px;
+  margin-top: 8px;
+  font-size: 19px;
+}
+
+.org-count-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: #205db5;
+  color: #ffffff;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 6px 10px;
+  box-shadow: 0 6px 16px rgba(58, 187, 247, 0.35);
+}
+
+.org-figure {
+  color: #64748b;
+  font-size: .9rem;
+}
+
+/* กริด 4×2 ด้วย Bootstrap cols */
+.org-grid .col {
+  padding: 10px;
+}
+
+/* ตัวบอกหน้าแบบจุดมีตัวเลข */
+.org-pager {
+  margin-bottom: 20px;
+}
+
+.org-pager .page-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .85);
+  color: #0f172a;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  border: 0;
+}
+
+.org-pager .page-dot.active {
+  background: #0ea5e9;
+  color: #fff;
+  box-shadow: 0 10px 18px rgba(14, 165, 233, .45);
+}
+
+.org-pager .page-dot:focus {
+  outline: none;
+}
+
+.org-grid {
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  /* ปรับระยะเวลาได้ เช่น 0.4s, 0.8s */
+}
+
+.org-grid.fade-out {
+  opacity: 0;
+}
+
+@media (max-width: 1000px) {
+  .hide-xs {
+    display: none !important;
+  }
+}
+
+
+/* สถิติการใช้งาน */
+.card_footer {
+  box-shadow: 0 0 31px -1px rgba(0, 74, 173, 0.3);
+  border-radius: 20px;
+  padding: 20px;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  background-color: white;
+}
+
+.usage-section {
+  /* background: #fff; */
+  /* padding: 40px 0 24px; */
+  color: #0f172a;
+}
+
+.usage-title {
+  color: #2b6cb0;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.tab-head {
+  width: 85%;
+  background: #29a3e7;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.stat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 6px;
+  border-radius: 8px;
+  transition: background .2s ease;
+}
+
+.stat-item:hover {
+  background: #f6f9ff;
+}
+
+.stat-icon {
+  flex: 0 0 28px;
+  height: 28px;
+  width: 28px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: #e9f2ff;
+  color: #2b6cb0;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.stat-title {
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.stat-meta {
+  font-size: .9rem;
+  color: #64748b;
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.stat-meta .bi {
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.stat-list .stat-item+.stat-item {
+  margin-top: 8px;
+}
+
+@media (max-width: 991.98px) {
+  .col-sep {
+    margin-top: 28px;
+  }
+}
+
+/* สถานะโหลด/ว่าง */
+.muted {
+  color: #94a3b8;
+}
+
+.skeleton {
+  height: 18px;
+  background: #eef2ff;
+  border-radius: 6px;
+  width: 100%;
+}
+
+/* ---------- ย้ายมาจาก inline style ใน template เดิม ---------- */
+.hero-left {
+  padding: 56px 0 43px;
+}
+.img-province {
+  width: 60%;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+.hero-white {
+  background-color: #fff;
+}
+.hero-tagline {
+  color: #8f8f8f;
+  margin-top: 45px;
+}
+.hero-logo-color {
+  z-index: 0;
+  margin-top: -185px;
+}
+h2.section-title {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+.nso-home .card-desc {
+  font-size: 14px;
+}
+.nso-home a.card {
+  display: block;
+  height: 100%;
+}
+.usage-section {
+  padding: 20px 0 25px;
+}
+.graph-section {
+  position: relative;
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-box { animation: none; }
+}

@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+
+{% block subtitle %}ความสัมพันธ์ Tags กับหน่วยงาน{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active"><a href="{{ h.url_for('statprovince.graph_page') }}">ความสัมพันธ์ Tags กับหน่วยงาน</a></li>
+{% endblock %}
+
+{% block primary %}
+  <div class="col-12">
+    {% snippet 'statprovince/snippets/tag_org_graph.html', height='calc(100vh - 220px)' %}
+  </div>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

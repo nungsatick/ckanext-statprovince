@@ -1,0 +1,17 @@
+{% include 'hierarchy/snippets/hierarchy_asset.html' %}
+{% set nodes = h.group_tree(type_='group') %}
+{% if query %}
+  {% set nodes = h.group_tree_highlight(groups, nodes) %}
+{% endif %}
+<div id="group-tree">
+  <ul class="hierarchy-tree-top">
+    {% for node in nodes|sort(attribute='title', reverse=sort == 'title desc') recursive %}
+      <li id="node_{{ node.name }}"{% if node.highlighted %} class="highlighted"{% endif %}>
+        <a href="{{ h.url_for('group.read', id=node.name) }}">{{ node.title or node.name }}</a>
+        {% if node.children %}
+          <ul class="hierarchy-tree">{{ loop(node.children|sort(attribute='title', reverse=sort == 'title desc')) }}</ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

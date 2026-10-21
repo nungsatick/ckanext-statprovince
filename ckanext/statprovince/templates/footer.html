@@ -1,0 +1,44 @@
+{% ckan_extends %}
+
+{% block footer_nav %}
+{% asset 'statprovince/footer_css' %}
+<div class="sp-footer">
+  <div class="sp-footer-brands" aria-label="หน่วยงานและบริการที่เกี่ยวข้อง">
+    <a href="https://www.mdes.go.th/" aria-label="กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม"><img class="sp-footer-mdes" src="{{ h.url_for_static('/statprovince/images/mdes-logo.png') }}" alt="กระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม" loading="lazy" /></a>
+    <a href="https://www.nso.go.th/" aria-label="สำนักงานสถิติแห่งชาติ"><img class="sp-footer-nso" src="{{ h.url_for_static('/statprovince/images/nso-logo.png') }}" alt="สำนักงานสถิติแห่งชาติ" loading="lazy" /></a>
+    <a href="https://gdcatalog.go.th/" aria-label="ระบบบัญชีข้อมูลภาครัฐ"><img class="sp-footer-gd" src="{{ h.url_for_static('/statprovince/images/gd-logo.png') }}" alt="Government Data Catalog" loading="lazy" /></a>
+    <a href="https://stathub.nso.go.th/" aria-label="ศูนย์กลางแบ่งปันข้อมูลสถิติ"><img class="sp-footer-hub" src="{{ h.url_for_static('/statprovince/images/stat-hub.png') }}" alt="Statistics Sharing Hub" loading="lazy" /></a>
+  </div>
+  <div class="sp-footer-grid">
+    <section>
+      <h2>ติดต่อสำนักงาน</h2>
+      <div class="sp-footer-contact"><i class="fa fa-map-marker" aria-hidden="true"></i><p>{{ h.statprovince_footer_contact('address') }}</p></div>
+      <div class="sp-footer-contact"><i class="fa fa-phone" aria-hidden="true"></i><p>{{ h.statprovince_footer_contact('phone') }}</p></div>
+      <div class="sp-footer-contact"><i class="fa fa-envelope" aria-hidden="true"></i><p><a href="mailto:{{ h.statprovince_footer_contact('email') }}">{{ h.statprovince_footer_contact('email') }}</a></p></div>
+    </section>
+    <section>
+      <h2>เกี่ยวกับหน่วยงาน</h2>
+      <ul>
+        <li><a href="https://gdhelppage.gdcatalog.go.th/service1.html">- นโยบายเว็บไซต์</a></li>
+        <li><a href="https://gdhelppage.gdcatalog.go.th/service2.html">- นโยบายข้อมูลส่วนบุคคล</a></li>
+        <li><a href="https://gdhelppage.gdcatalog.go.th/service3.html">- นโยบายการรักษาความมั่นคงปลอดภัยเว็บไซต์</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>บริการของ สสช.</h2>
+      <ul>
+        <li><a href="https://gdcatalog.go.th/">- ระบบบัญชีข้อมูลภาครัฐ</a></li>
+        <li><a href="https://stathub.nso.go.th/">- ศูนย์กลางแบ่งปันข้อมูลสถิติ</a></li>
+      </ul>
+    </section>
+    <section class="sp-footer-system" aria-label="ข้อมูลระบบ">
+      <div class="sp-footer-visitors">จำนวนผู้เข้าชม <strong>{{ h.thai_gdc_get_stat_all_view() }}</strong></div>
+      {% snippet 'snippets/language_selector.html' %}
+      <div class="sp-footer-powered"><strong>Powered by:</strong> <a href="https://ckan.org/"><img src="{{ h.url_for_static('/base/images/ckan-logo-footer.png') }}" alt="CKAN" /></a> <a href="https://gitlab.nectec.or.th/opend/installing-ckan/-/blob/master/README.md"><img class="sp-footer-opend" src="{{ h.url_for_static('/base/images/logo-opend.png') }}" alt="Open-D" /></a></div>
+      <p class="sp-footer-credit">สนับสนุนระบบ Thai-GDC โดย สำนักงานสถิติแห่งชาติ</p>
+      <div class="sp-footer-version">รุ่นโปรแกรม: {{ h.thai_gdc_get_extension_version('version') }}<br />วันที่: {{ h.thai_gdc_get_extension_version('date') }}</div>
+    </section>
+  </div>
+</div>
+{% endblock %}
+

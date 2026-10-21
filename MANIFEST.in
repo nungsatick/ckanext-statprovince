@@ -1,0 +1,4 @@
+include README.md LICENSE
+recursive-include ckanext/statprovince/templates *
+recursive-include ckanext/statprovince/public *
+recursive-include ckanext/statprovince/assets *

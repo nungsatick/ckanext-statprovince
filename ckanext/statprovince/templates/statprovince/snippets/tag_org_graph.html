@@ -1,0 +1,55 @@
+{#
+  กราฟความสัมพันธ์ Tags x หน่วยงาน (ข้อมูลจาก /api/3/action/statprovince_tag_org_graph)
+
+  ตัวอย่าง:
+    {% snippet 'statprovince/snippets/tag_org_graph.html', height='600px', full_link=true %}
+#}
+{% set height = height or '600px' %}
+<div class="sp-graph" data-sp-graph data-api="{{ h.url_for('api.action', ver=3, logic_function='statprovince_tag_org_graph') }}"
+     data-org-url="{{ h.url_for('organization.read', id='__ID__') }}"
+     data-tag-url="{{ h.url_for('dataset.search') }}?tags=__ID__"
+     style="height: {{ height }}">
+  <div class="sp-graph-loading">กำลังประมวลผลกราฟ...</div>
+
+  <div class="sp-graph-info">
+    <b>ความสัมพันธ์ Tags (Top 100) กับหน่วยงาน</b>
+    <label class="sp-view-label">รูปแบบกราฟ
+      <select data-sp-view aria-label="รูปแบบกราฟ">
+        <option value="cluster">Cluster — จัดกลุ่มเครือข่าย</option>
+        <option value="bipartite">Bipartite — แยกสองฝั่ง</option>
+        <option value="chord">Chord — วงกลมความสัมพันธ์</option>
+        <option value="heatmap">Heatmap — ตารางความเข้มสี</option>
+        <option value="focus" selected>Focus — เน้นความสัมพันธ์</option>
+      </select>
+    </label>
+    <div class="sp-graph-legend">
+      <div><span class="sp-dot sp-dot-org"></span><b>หน่วยงาน</b></div>
+      <div><span class="sp-dot sp-dot-tag"></span><b>คำค้น (Tags)</b></div>
+    </div>
+    <div class="sp-graph-slider">
+      <label>
+        <span>จำนวน Top Tags:</span>
+        <b data-sp-slider-val>80</b>
+      </label>
+      <input type="range" min="1" max="100" value="80" step="1" data-sp-slider aria-label="จำนวน Top Tags">
+    </div>
+    <div class="sp-graph-help">
+      <b>การควบคุม:</b><br>
+      <span data-sp-help></span>
+    </div>
+    <div class="sp-graph-date" data-sp-date></div>
+  </div>
+
+  {% if full_link %}
+  <a class="btn btn-outline-secondary sp-graph-full" href="{{ h.url_for('statprovince.graph_page') }}" target="_blank" rel="noopener" title="เปิดแบบเต็มจอ">
+    <i class="fa fa-up-right-and-down-left-from-center"></i>
+  </a>
+  {% endif %}
+
+  <div class="sp-graph-canvas" data-sp-canvas></div>
+  <div class="sp-graph-detail" data-sp-detail hidden aria-live="polite"></div>
+</div>
+
+<script src="{{ h.statprovince_vis_network_url() }}"></script>
+{% asset 'statprovince/graph_css' %}
+{% asset 'statprovince/graph_js' %}

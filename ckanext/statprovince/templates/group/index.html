@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block groups_list %}
+  {% snippet 'group/snippets/statprovince_tree.html', groups=page.items, query=q, sort=sort_by_selected %}
+{% endblock %}
+
+{% block page_pagination %}
+  {% if q %}{{ super() }}{% endif %}
+{% endblock %}

@@ -1,0 +1,153 @@
+{#
+  หน้าแรก Provincial STAT Catalog — พอร์ตมาจาก template ที่แก้ตรงบน statprovince.gdcatalog.go.th
+  (เดิมโหลด home/css/layout1.css, home/js/home-auto.js และ iframe /base/html/nw_graph_wlink.html)
+#}
+{% set stats = h.get_site_statistics() %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+{% asset 'statprovince/home_css' %}
+
+<div role="main" class="nso-home" aria-label="Provincial STAT Catalog Homepage">
+
+  {# ---------- Hero ---------- #}
+  <section class="hero-section color_text_header">
+    <div class="row hero-row">
+      <div class="col-md-6 col-sm-12 col-xs-12 hero-left">
+        <h1 class="color_text_header">ศูนย์ข้อมูลสถิติระดับจังหวัด<br>(Provincial STAT Catalog)</h1>
+
+        <form class="module-content search-form" method="get" action="{{ h.url_for('dataset.search') }}">
+          <div class="search-box">
+            <div class="input-group">
+              <input aria-label="{{ _('Search datasets') }}" id="field-main-search" type="text" class="form-control" name="q" value="" autocomplete="off" placeholder="{{ _('E.g. environment') }}" />
+              <button class="btn btn-search" type="submit">{{ _('Search') }}</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="stats">
+          <div class="stats-up"><span>{{ stats.dataset_count }}</span> ชุดข้อมูล</div>
+          <div class="stats-up"><span>{{ stats.organization_count }}</span> องค์กร</div>
+          <div class="stats-up"><span>{{ stats.group_count }}</span> กลุ่มข้อมูล</div>
+        </div>
+        <a href="{{ h.url_for('dataset.search') }}" class="btn btn-outline-light">ไปยังชุดข้อมูล →</a>
+      </div>
+
+      <div class="col-md-6 col-sm-12 col-xs-12 hide-xs hero-right-wrap">
+        <div class="center_dark_blue">
+          <div class="row">
+            <div class="col-6">
+              <img src="{{ h.url_for_static('/statprovince/images/logo_PSC.png') }}" class="d-block img-province" alt="Provincial STAT Catalog">
+              <p class="text_about">แหล่งรวบรวมข้อมูลสถิติในระดับพื้นที่ที่สำคัญของประเทศจากหน่วยงานภาครัฐ</p>
+            </div>
+            <div class="col-6"></div>
+          </div>
+        </div>
+        <div class="row h-100">
+          <div class="col-md-6 img_hero floating-box"></div>
+          <div class="col-md-6 hero-white">
+            <p class="hero-tagline">SMART STATISTICS. <br>SMART DECISIONS</p>
+            <div class="hero-card-box img_hero">
+              <img src="{{ h.url_for_static('/statprovince/images/logo_PSC_color.png') }}" class="img-fluid floating-box hero-logo-color" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ---------- กลุ่ม (กลุ่มระดับบนสุดของ hierarchy) ---------- #}
+  {% set groups = h.statprovince_top_groups() %}
+  {% if groups %}
+  <div class="text-center group-section">
+    <h2 class="section-title color_text_header">กลุ่ม</h2>
+    <div id="groupCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-inner">
+        {% for slide in groups|batch(4) %}
+        <div class="carousel-item {{ 'active' if loop.first }}">
+          <div class="row justify-content-center carousel-group">
+            {% for g in slide %}
+            {% set url = h.url_for('group.read', id=g.name, include_children='True') %}
+            <div class="col-md-3 card-group">
+              <a class="card text-decoration-none" href="{{ url }}">
+                <span class="org-count-badge">{{ g.dataset_count }} ชุดข้อมูล</span>
+                {% if g.image_url %}
+                  <img src="{{ g.image_url }}" class="card-img-top" alt="{{ g.title }}">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="fw-bold">{{ g.title }}</h5>
+                  <p class="card-desc">{{ h.markdown_extract(g.description, extract_length=160) }}</p>
+                </div>
+                {% if g.child_count %}
+                <div class="card-footer">
+                  <small class="text-muted">จำนวนกลุ่มย่อย: {{ g.child_count }}</small>
+                </div>
+                {% endif %}
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if groups|length > 4 %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#groupCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">ก่อนหน้า</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#groupCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">ถัดไป</span>
+      </button>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ---------- องค์กร (โหลดด้วย JS แบ่งหน้าละ 8 และเลื่อนอัตโนมัติ) ---------- #}
+  <section class="org-section">
+    <div class="container">
+      <h3 class="org-title mb-3 color_text_header">องค์กร</h3>
+      <div class="all_col">
+        <div id="org-grid-js" class="org-grid row row-cols-2 row-cols-md-4 g-0"
+             data-api="{{ h.url_for('api.action', ver=3, logic_function='organization_list') }}"></div>
+      </div>
+      <div class="org-pager d-flex justify-content-end align-items-center gap-2 mt-3" id="org-pager"></div>
+    </div>
+  </section>
+
+  {# ---------- กราฟ Tags x หน่วยงาน (live จาก API) ---------- #}
+  <section class="graph-section">
+    {% snippet 'statprovince/snippets/tag_org_graph.html', height='600px', full_link=true %}
+  </section>
+
+  {# ---------- สถิติการใช้งาน ---------- #}
+  <section class="usage-section">
+    <div class="container">
+      <h3 class="usage-title color_text_header">สถิติการใช้งาน</h3>
+      <div class="row">
+        <div class="col-lg-6 mb-3 pe-lg-3">
+          <div class="card_footer">
+            <div class="tab-head">ชุดข้อมูลที่ปรับปรุงล่าสุด</div>
+            <ul class="stat-list" id="latest-datasets">
+              {% for i in range(3) %}
+              <li class="stat-item"><div class="stat-icon"><i class="bi bi-table"></i></div><div class="skeleton"></div></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3 pe-lg-3">
+          <div class="col-sep card_footer">
+            <div class="tab-head">ชุดข้อมูลยอดนิยม</div>
+            <ul class="stat-list" id="popular-datasets">
+              {% for i in range(3) %}
+              <li class="stat-item"><div class="stat-icon"><i class="bi bi-eye"></i></div><div class="skeleton"></div></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% asset 'statprovince/home_js' %}
+</div>

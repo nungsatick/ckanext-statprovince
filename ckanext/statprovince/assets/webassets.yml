@@ -1,0 +1,34 @@
+footer_css:
+  filters: cssrewrite
+  output: statprovince/%(version)s_footer.css
+  contents:
+    - css/footer.css
+
+header_css:
+  filters: cssrewrite
+  output: statprovince/%(version)s_header.css
+  contents:
+    - css/header.css
+
+graph_css:
+  output: statprovince/%(version)s_graph.css
+  contents:
+    - css/graph.css
+
+graph_js:
+  filter: rjsmin
+  output: statprovince/%(version)s_graph.js
+  contents:
+    - js/graph.js
+
+home_css:
+  filters: cssrewrite
+  output: statprovince/%(version)s_home.css
+  contents:
+    - css/home.css
+
+home_js:
+  filter: rjsmin
+  output: statprovince/%(version)s_home.js
+  contents:
+    - js/home.js
