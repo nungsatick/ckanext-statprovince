@@ -2,6 +2,12 @@
 
 ส่วนปรับแต่ง **Provincial STAT Catalog** สำหรับ CKAN-OpenD (CKAN 2.10 + thai_gdc) รวมหน้าแรก Header Footer และกราฟไว้ใน extension เพื่ออัปเดต CKAN หรือ thai_gdc ได้โดยไม่ต้องแก้ไฟล์ต้นฉบับซ้ำ
 
+## ภาพตัวอย่างหน้าแรก
+
+![หน้าแรก Provincial STAT Catalog](docs/images/homepage.png)
+
+ภาพจากเว็บทดสอบขณะเปิดโหมดพัฒนา
+
 ## ความสามารถ
 
 - หน้าแรกแสดงกลุ่ม องค์กร ชุดข้อมูลล่าสุด และชุดข้อมูลยอดนิยม
