@@ -1,5 +1,7 @@
 {% ckan_extends %}
 
+{% block title %}{{ self.subtitle()|trim }}{% if self.subtitle()|trim %}-{% endif %}Provincial STAT Catalog{% endblock %}
+
 {% block links %}
   <link rel="icon" href="{{ h.url_for_static('/statprovince/images/favicon.ico') }}" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />
   <link rel="icon" type="image/png" sizes="32x32" href="{{ h.url_for_static('/statprovince/images/favicon-32.png') }}" />
