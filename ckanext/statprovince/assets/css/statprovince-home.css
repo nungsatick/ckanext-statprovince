@@ -83,6 +83,21 @@ body {
 
 .hero-row {
   align-items: stretch !important;
+  margin-inline: 0;
+}
+
+/* Remove nested Bootstrap gutters so the white panel has a straight edge. */
+.nso-home .hero-right-wrap { padding-inline: 0; }
+.nso-home .hero-art-row { --bs-gutter-x: 0; margin-inline: 0; }
+.nso-home .hero-art-row > .hero-white {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 0;
+}
+.nso-home .hero-white > .hero-card-box {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
 }
 
 
@@ -497,13 +512,22 @@ h2.section-title {
 .hero-white {
   background-color: #fff;
 }
+@media (min-width: 1001px) {
+  /* Paint the entire right-hand strip, including space below its content. */
+  .nso-home .hero-section {
+    background: linear-gradient(to right, transparent 0 75%, #fff 75% 100%);
+  }
+  .nso-home .hero-white {
+    box-shadow: 0 32px 0 #fff;
+  }
+}
 .hero-tagline {
   color: #8f8f8f;
   margin-top: 45px;
 }
 .hero-logo-color {
   z-index: 0;
-  margin-top: -185px;
+  margin-top: -65px;
 }
 h2.section-title {
   padding-top: 24px;
