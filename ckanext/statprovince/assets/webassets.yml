@@ -1,34 +1,36 @@
+# ชื่อไฟล์ขึ้นต้นด้วย "statprovince-" เพราะ webassets ค้น path ใน contents จากทุก extension + core
+# (ชื่อทั่วไปอย่าง css/home.css อาจไปได้ไฟล์ของคนอื่นแทน)
+# ไม่ใช้ filters: cssrewrite — กับโฟลเดอร์ assets/ จะ error "Cannot determine url" ในโหมด production
+# รูปใน CSS ให้อ้าง absolute เช่น url('/statprovince/images/background_PSC.png')
+
 footer_css:
-  filters: cssrewrite
-  output: statprovince/%(version)s_footer.css
+  output: statprovince/%(version)s_statprovince-footer.css
   contents:
-    - css/footer.css
+    - css/statprovince-footer.css
 
 header_css:
-  filters: cssrewrite
-  output: statprovince/%(version)s_header.css
+  output: statprovince/%(version)s_statprovince-header.css
   contents:
-    - css/header.css
+    - css/statprovince-header.css
 
 graph_css:
-  output: statprovince/%(version)s_graph.css
+  output: statprovince/%(version)s_statprovince-graph.css
   contents:
-    - css/graph.css
+    - css/statprovince-graph.css
 
 graph_js:
   filter: rjsmin
-  output: statprovince/%(version)s_graph.js
+  output: statprovince/%(version)s_statprovince-graph.js
   contents:
-    - js/graph.js
+    - js/statprovince-graph.js
 
 home_css:
-  filters: cssrewrite
-  output: statprovince/%(version)s_home.css
+  output: statprovince/%(version)s_statprovince-home.css
   contents:
-    - css/home.css
+    - css/statprovince-home.css
 
 home_js:
   filter: rjsmin
-  output: statprovince/%(version)s_home.js
+  output: statprovince/%(version)s_statprovince-home.js
   contents:
-    - js/home.js
+    - js/statprovince-home.js
